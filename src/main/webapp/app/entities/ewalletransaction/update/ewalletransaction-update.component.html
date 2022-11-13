@@ -1,0 +1,162 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ewalletransaction-heading"
+        data-cy="EwalletransactionCreateUpdateHeading"
+        jhiTranslate="ewalletApp.ewalletransaction.home.createOrEditLabel"
+      >
+        Crear o editar Ewalletransaction
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.externalid" for="field_externalid">Externalid</label>
+          <input
+            type="text"
+            class="form-control"
+            name="externalid"
+            id="field_externalid"
+            data-cy="externalid"
+            formControlName="externalid"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.idewalletcliente" for="field_idewalletcliente"
+            >Idewalletcliente</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="idewalletcliente"
+            id="field_idewalletcliente"
+            data-cy="idewalletcliente"
+            formControlName="idewalletcliente"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.idusercreate" for="field_idusercreate">Idusercreate</label>
+          <input
+            type="text"
+            class="form-control"
+            name="idusercreate"
+            id="field_idusercreate"
+            data-cy="idusercreate"
+            formControlName="idusercreate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.xapikey" for="field_xapikey">Xapikey</label>
+          <input type="text" class="form-control" name="xapikey" id="field_xapikey" data-cy="xapikey" formControlName="xapikey" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.authorization" for="field_authorization"
+            >Authorization</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="authorization"
+            id="field_authorization"
+            data-cy="authorization"
+            formControlName="authorization"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.merchantid" for="field_merchantid">Merchantid</label>
+          <input
+            type="text"
+            class="form-control"
+            name="merchantid"
+            id="field_merchantid"
+            data-cy="merchantid"
+            formControlName="merchantid"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.accesstoken" for="field_accesstoken">Accesstoken</label>
+          <input
+            type="text"
+            class="form-control"
+            name="accesstoken"
+            id="field_accesstoken"
+            data-cy="accesstoken"
+            formControlName="accesstoken"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.response" for="field_response">Response</label>
+          <input type="text" class="form-control" name="response" id="field_response" data-cy="response" formControlName="response" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.idautorization" for="field_idautorization"
+            >Idautorization</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="idautorization"
+            id="field_idautorization"
+            data-cy="idautorization"
+            formControlName="idautorization"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.timecreate" for="field_timecreate">Timecreate</label>
+          <input
+            type="text"
+            class="form-control"
+            name="timecreate"
+            id="field_timecreate"
+            data-cy="timecreate"
+            formControlName="timecreate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletransaction.timeresponse" for="field_timeresponse">Timeresponse</label>
+          <input
+            type="text"
+            class="form-control"
+            name="timeresponse"
+            id="field_timeresponse"
+            data-cy="timeresponse"
+            formControlName="timeresponse"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

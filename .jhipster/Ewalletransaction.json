@@ -1,0 +1,64 @@
+{
+  "applications": "*",
+  "changelogDate": "20221112183615",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ewalletransaction",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "externalid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idewalletcliente",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idusercreate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "xapikey",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "authorization",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "merchantid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accesstoken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "response",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idautorization",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timecreate",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "timeresponse",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ewalletransaction",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

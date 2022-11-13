@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ewalletcliente">
+      <h2 data-cy="ewalletclienteDetailsHeading"><span jhiTranslate="ewalletApp.ewalletcliente.detail.title">Ewalletcliente</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ewalletApp.ewalletcliente.id">Id</span></dt>
+        <dd>
+          <span>{{ ewalletcliente.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletcliente.nombre">Nombre</span></dt>
+        <dd>
+          <span>{{ ewalletcliente.nombre }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletcliente.idwizpos">Idwizpos</span></dt>
+        <dd>
+          <span>{{ ewalletcliente.idwizpos }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletcliente.datos">Datos</span></dt>
+        <dd>
+          <span>{{ ewalletcliente.datos }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletcliente.idEW">Id EW</span></dt>
+        <dd>
+          <div *ngIf="ewalletcliente.idEW">
+            <a [routerLink]="['/ewalletransaction', ewalletcliente.idEW.id, 'view']">{{ ewalletcliente.idEW.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ewalletcliente', ewalletcliente.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

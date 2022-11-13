@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ewalletuser-heading"
+        data-cy="EwalletuserCreateUpdateHeading"
+        jhiTranslate="ewalletApp.ewalletuser.home.createOrEditLabel"
+      >
+        Crear o editar Ewalletuser
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletuser.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletuser.username" for="field_username">Username</label>
+          <input type="text" class="form-control" name="username" id="field_username" data-cy="username" formControlName="username" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletuser.password" for="field_password">Password</label>
+          <input type="text" class="form-control" name="password" id="field_password" data-cy="password" formControlName="password" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletuser.appid" for="field_appid">Appid</label>
+          <input type="text" class="form-control" name="appid" id="field_appid" data-cy="appid" formControlName="appid" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletuser.apikey" for="field_apikey">Apikey</label>
+          <input type="text" class="form-control" name="apikey" id="field_apikey" data-cy="apikey" formControlName="apikey" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

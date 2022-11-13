@@ -1,0 +1,158 @@
+<div>
+  <h2 id="page-heading" data-cy="EwalletransactionHeading">
+    <span jhiTranslate="ewalletApp.ewalletransaction.home.title">Ewalletransactions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="ewalletApp.ewalletransaction.home.refreshListLabel">Refrescar lista</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-ewalletransaction"
+        [routerLink]="['/ewalletransaction/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="ewalletApp.ewalletransaction.home.createLabel"> Crear nuevo Ewalletransaction </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="ewalletransactions?.length === 0">
+    <span jhiTranslate="ewalletApp.ewalletransaction.home.notFound">Ningún Ewalletransactions encontrado</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="ewalletransactions && ewalletransactions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.id">Id</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="externalid">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.externalid">Externalid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="idewalletcliente">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.idewalletcliente">Idewalletcliente</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="idusercreate">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.idusercreate">Idusercreate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="xapikey">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.xapikey">Xapikey</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="authorization">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.authorization">Authorization</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="merchantid">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.merchantid">Merchantid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="accesstoken">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.accesstoken">Accesstoken</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="response">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.response">Response</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="idautorization">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.idautorization">Idautorization</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timecreate">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.timecreate">Timecreate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timeresponse">
+            <div class="d-flex">
+              <span jhiTranslate="ewalletApp.ewalletransaction.timeresponse">Timeresponse</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ewalletransaction of ewalletransactions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/ewalletransaction', ewalletransaction.id, 'view']">{{ ewalletransaction.id }}</a>
+          </td>
+          <td>{{ ewalletransaction.externalid }}</td>
+          <td>{{ ewalletransaction.idewalletcliente }}</td>
+          <td>{{ ewalletransaction.idusercreate }}</td>
+          <td>{{ ewalletransaction.xapikey }}</td>
+          <td>{{ ewalletransaction.authorization }}</td>
+          <td>{{ ewalletransaction.merchantid }}</td>
+          <td>{{ ewalletransaction.accesstoken }}</td>
+          <td>{{ ewalletransaction.response }}</td>
+          <td>{{ ewalletransaction.idautorization }}</td>
+          <td>{{ ewalletransaction.timecreate }}</td>
+          <td>{{ ewalletransaction.timeresponse }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/ewalletransaction', ewalletransaction.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Vista</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/ewalletransaction', ewalletransaction.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editar</span>
+              </button>
+
+              <button type="submit" (click)="delete(ewalletransaction)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Eliminar</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

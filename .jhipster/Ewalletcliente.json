@@ -1,0 +1,38 @@
+{
+  "applications": "*",
+  "changelogDate": "20221112183614",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ewalletcliente",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idwizpos",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "datos",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ewalletcliente",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "ewalletransaction",
+      "relationshipName": "idEW",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

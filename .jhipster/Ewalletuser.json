@@ -1,0 +1,36 @@
+{
+  "applications": "*",
+  "changelogDate": "20221112183613",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "ewalletuser",
+  "fields": [
+    {
+      "fieldName": "id",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "username",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "appid",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apikey",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Ewalletuser",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

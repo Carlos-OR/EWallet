@@ -1,0 +1,27 @@
+{
+  "ewalletApp": {
+    "ewalletcliente": {
+      "home": {
+        "title": "Ewalletclientes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Ewalletcliente",
+        "createOrEditLabel": "Crear o editar Ewalletcliente",
+        "notFound": "Ningún Ewalletclientes encontrado"
+      },
+      "created": "Un nuevo Ewalletcliente ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ewalletcliente ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ewalletcliente ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ewalletcliente {{ id }}?"
+      },
+      "detail": {
+        "title": "Ewalletcliente"
+      },
+      "id": "Id",
+      "nombre": "Nombre",
+      "idwizpos": "Idwizpos",
+      "datos": "Datos",
+      "idEW": "Id EW"
+    }
+  }
+}

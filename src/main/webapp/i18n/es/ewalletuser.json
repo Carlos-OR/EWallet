@@ -1,0 +1,27 @@
+{
+  "ewalletApp": {
+    "ewalletuser": {
+      "home": {
+        "title": "Ewalletusers",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Ewalletuser",
+        "createOrEditLabel": "Crear o editar Ewalletuser",
+        "notFound": "Ningún Ewalletusers encontrado"
+      },
+      "created": "Un nuevo Ewalletuser ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ewalletuser ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ewalletuser ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ewalletuser {{ id }}?"
+      },
+      "detail": {
+        "title": "Ewalletuser"
+      },
+      "id": "Id",
+      "username": "Username",
+      "password": "Password",
+      "appid": "Appid",
+      "apikey": "Apikey"
+    }
+  }
+}

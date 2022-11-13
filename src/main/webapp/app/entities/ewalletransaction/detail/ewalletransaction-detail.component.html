@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ewalletransaction">
+      <h2 data-cy="ewalletransactionDetailsHeading">
+        <span jhiTranslate="ewalletApp.ewalletransaction.detail.title">Ewalletransaction</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.id">Id</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.externalid">Externalid</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.externalid }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.idewalletcliente">Idewalletcliente</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.idewalletcliente }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.idusercreate">Idusercreate</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.idusercreate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.xapikey">Xapikey</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.xapikey }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.authorization">Authorization</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.authorization }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.merchantid">Merchantid</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.merchantid }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.accesstoken">Accesstoken</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.accesstoken }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.response">Response</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.response }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.idautorization">Idautorization</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.idautorization }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.timecreate">Timecreate</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.timecreate }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletransaction.timeresponse">Timeresponse</span></dt>
+        <dd>
+          <span>{{ ewalletransaction.timeresponse }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ewalletransaction', ewalletransaction.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>

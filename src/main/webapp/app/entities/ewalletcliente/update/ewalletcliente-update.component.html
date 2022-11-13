@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-ewalletcliente-heading"
+        data-cy="EwalletclienteCreateUpdateHeading"
+        jhiTranslate="ewalletApp.ewalletcliente.home.createOrEditLabel"
+      >
+        Crear o editar Ewalletcliente
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletcliente.id" for="field_id">Id</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletcliente.nombre" for="field_nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletcliente.idwizpos" for="field_idwizpos">Idwizpos</label>
+          <input type="number" class="form-control" name="idwizpos" id="field_idwizpos" data-cy="idwizpos" formControlName="idwizpos" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletcliente.datos" for="field_datos">Datos</label>
+          <input type="text" class="form-control" name="datos" id="field_datos" data-cy="datos" formControlName="datos" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="ewalletApp.ewalletcliente.idEW" for="field_idEW">Id EW</label>
+          <select
+            class="form-control"
+            id="field_idEW"
+            data-cy="idEW"
+            name="idEW"
+            formControlName="idEW"
+            [compareWith]="compareEwalletransaction"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="ewalletransactionOption" *ngFor="let ewalletransactionOption of ewalletransactionsSharedCollection">
+              {{ ewalletransactionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancelar</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Guardar</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

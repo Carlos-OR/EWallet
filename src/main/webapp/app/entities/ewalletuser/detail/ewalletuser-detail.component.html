@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="ewalletuser">
+      <h2 data-cy="ewalletuserDetailsHeading"><span jhiTranslate="ewalletApp.ewalletuser.detail.title">Ewalletuser</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="ewalletApp.ewalletuser.id">Id</span></dt>
+        <dd>
+          <span>{{ ewalletuser.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletuser.username">Username</span></dt>
+        <dd>
+          <span>{{ ewalletuser.username }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletuser.password">Password</span></dt>
+        <dd>
+          <span>{{ ewalletuser.password }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletuser.appid">Appid</span></dt>
+        <dd>
+          <span>{{ ewalletuser.appid }}</span>
+        </dd>
+        <dt><span jhiTranslate="ewalletApp.ewalletuser.apikey">Apikey</span></dt>
+        <dd>
+          <span>{{ ewalletuser.apikey }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Volver</span>
+      </button>
+
+      <button type="button" [routerLink]="['/ewalletuser', ewalletuser.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editar</span>
+      </button>
+    </div>
+  </div>
+</div>
