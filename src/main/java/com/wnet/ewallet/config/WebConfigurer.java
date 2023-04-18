@@ -5,10 +5,12 @@ import static java.net.URLDecoder.decode;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import javax.servlet.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.server.*;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
@@ -83,7 +85,7 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
         return extractedPath.substring(0, extractionEndIndex);
     }
 
-    @Bean
+    /*@Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = jHipsterProperties.getCors();
@@ -95,5 +97,35 @@ public class WebConfigurer implements ServletContextInitializer, WebServerFactor
             source.registerCorsConfiguration("/swagger-ui/**", config);
         }
         return new CorsFilter(source);
+    }*/
+
+    // con esta configuración hubo solución para un dominio https que daba error 401
+    // error: Unauthorized: Full authentication is required to access this resurce.
+    @Bean
+    public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        CorsConfiguration config = jHipsterProperties.getCors();
+        //config.addAllowedOrigin("*");
+        config.addAllowedOriginPattern("*");
+        config.addAllowedHeader("*");
+        config.addAllowedMethod("*");
+        config.setAllowCredentials(true);
+        config.setMaxAge(3600L);
+        //config.setAllowedMethods(Arrays.asList("POST", "GET", "PUT", "DELETE", "OPTIONS"));
+        //config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
+
+        if (!CollectionUtils.isEmpty(config.getAllowedOrigins()) || !CollectionUtils.isEmpty(config.getAllowedOriginPatterns())) {
+            log.debug("Registering CORS filter");
+            source.registerCorsConfiguration("/api/**", config);
+            source.registerCorsConfiguration("/management/**", config);
+            source.registerCorsConfiguration("/v3/api-docs", config);
+            source.registerCorsConfiguration("/swagger-ui/**", config);
+        }
+
+        source.registerCorsConfiguration("/**", config);
+        return new CorsFilter(source);
+        //FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+        //bean.setOrder(0);
+        //return bean;
     }
 }

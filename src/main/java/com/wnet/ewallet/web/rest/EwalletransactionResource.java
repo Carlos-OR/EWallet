@@ -157,6 +157,75 @@ public class EwalletransactionResource {
                 if (ewalletransaction.getTimeresponse() != null) {
                     existingEwalletransaction.setTimeresponse(ewalletransaction.getTimeresponse());
                 }
+                if (ewalletransaction.getTimeout() != null) {
+                    existingEwalletransaction.setTimeout(ewalletransaction.getTimeout());
+                }
+
+                return existingEwalletransaction;
+            })
+            .map(ewalletransactionRepository::save);
+
+        return ResponseUtil.wrapOrNotFound(
+            result,
+            HeaderUtil.createEntityUpdateAlert(applicationName, true, ENTITY_NAME, ewalletransaction.getId().toString())
+        );
+    }
+
+    @PatchMapping(value = "/ewalletransactions/updatebyexternalid", consumes = { "application/json", "application/merge-patch+json" })
+    public ResponseEntity<Ewalletransaction> partialUpdateEwalletransactionByExternalid(@RequestBody Ewalletransaction ewalletransaction)
+        throws URISyntaxException {
+        Optional<Ewalletransaction> ewt = null;
+        if (ewalletransaction.getExternalid() != null && !ewalletransaction.getExternalid().isEmpty()) {
+            ewt = ewalletransactionRepository.findByExternalID(ewalletransaction.getExternalid());
+        } else {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "externalid nulo o vacio");
+        }
+
+        if (!ewt.isPresent()) {
+            throw new BadRequestAlertException("Entity not found", ENTITY_NAME, "Datos asociados a externalid no encontrados");
+        } else {
+            ewalletransaction.setId(ewt.get().getId());
+        }
+
+        Optional<Ewalletransaction> result = ewalletransactionRepository
+            .findById(ewalletransaction.getId())
+            .map(existingEwalletransaction -> {
+                if (ewalletransaction.getExternalid() != null) {
+                    existingEwalletransaction.setExternalid(ewalletransaction.getExternalid());
+                }
+                if (ewalletransaction.getIdewalletcliente() != null) {
+                    existingEwalletransaction.setIdewalletcliente(ewalletransaction.getIdewalletcliente());
+                }
+                if (ewalletransaction.getIdusercreate() != null) {
+                    existingEwalletransaction.setIdusercreate(ewalletransaction.getIdusercreate());
+                }
+                if (ewalletransaction.getXapikey() != null) {
+                    existingEwalletransaction.setXapikey(ewalletransaction.getXapikey());
+                }
+                if (ewalletransaction.getAuthorization() != null) {
+                    existingEwalletransaction.setAuthorization(ewalletransaction.getAuthorization());
+                }
+                if (ewalletransaction.getMerchantid() != null) {
+                    existingEwalletransaction.setMerchantid(ewalletransaction.getMerchantid());
+                }
+                if (ewalletransaction.getAccesstoken() != null) {
+                    existingEwalletransaction.setAccesstoken(ewalletransaction.getAccesstoken());
+                }
+                if (ewalletransaction.getResponse() != null) {
+                    existingEwalletransaction.setResponse(ewalletransaction.getResponse());
+                }
+                if (ewalletransaction.getIdautorization() != null) {
+                    existingEwalletransaction.setIdautorization(ewalletransaction.getIdautorization());
+                }
+                if (ewalletransaction.getTimecreate() != null) {
+                    existingEwalletransaction.setTimecreate(ewalletransaction.getTimecreate());
+                }
+                if (ewalletransaction.getTimeresponse() != null) {
+                    existingEwalletransaction.setTimeresponse(ewalletransaction.getTimeresponse());
+                }
+                if (ewalletransaction.getTimeout() != null) {
+                    existingEwalletransaction.setTimeout(ewalletransaction.getTimeout());
+                }
 
                 return existingEwalletransaction;
             })
@@ -206,5 +275,11 @@ public class EwalletransactionResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @GetMapping("/ewalletransactions/findbyexternalid/{external_id}")
+    public ResponseEntity<Ewalletransaction> getTransactionByExternalID(@PathVariable String external_id) {
+        Optional<Ewalletransaction> ewalletransaction = ewalletransactionRepository.findByExternalID(external_id);
+        return ResponseUtil.wrapOrNotFound(ewalletransaction);
     }
 }

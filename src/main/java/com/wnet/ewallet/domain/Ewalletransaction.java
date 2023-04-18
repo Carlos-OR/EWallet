@@ -1,9 +1,12 @@
 package com.wnet.ewallet.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * A Ewalletransaction.
@@ -49,10 +52,19 @@ public class Ewalletransaction implements Serializable {
     private String idautorization;
 
     @Column(name = "timecreate")
-    private String timecreate;
+    //    @Temporal(TemporalType.TIMESTAMP)
+    //    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+    //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    private Date timecreate;
 
     @Column(name = "timeresponse")
-    private String timeresponse;
+    //    @Temporal(TemporalType.TIMESTAMP)
+    //    @DateTimeFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+    //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    private Date timeresponse;
+
+    @Column(name = "timeout")
+    private Integer timeout;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -186,30 +198,43 @@ public class Ewalletransaction implements Serializable {
         this.idautorization = idautorization;
     }
 
-    public String getTimecreate() {
+    public Date getTimecreate() {
         return this.timecreate;
     }
 
-    public Ewalletransaction timecreate(String timecreate) {
+    public Ewalletransaction timecreate(Date timecreate) {
         this.setTimecreate(timecreate);
         return this;
     }
 
-    public void setTimecreate(String timecreate) {
+    public void setTimecreate(Date timecreate) {
         this.timecreate = timecreate;
     }
 
-    public String getTimeresponse() {
+    public Date getTimeresponse() {
         return this.timeresponse;
     }
 
-    public Ewalletransaction timeresponse(String timeresponse) {
+    public Ewalletransaction timeresponse(Date timeresponse) {
         this.setTimeresponse(timeresponse);
         return this;
     }
 
-    public void setTimeresponse(String timeresponse) {
+    public void setTimeresponse(Date timeresponse) {
         this.timeresponse = timeresponse;
+    }
+
+    public Integer getTimeout() {
+        return timeout;
+    }
+
+    public Ewalletransaction timeout(Integer timeout) {
+        this.setTimeout(timeout);
+        return this;
+    }
+
+    public void setTimeout(Integer timeout) {
+        this.timeout = timeout;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
